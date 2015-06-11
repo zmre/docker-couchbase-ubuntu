@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Couchbase Server start script.
+
+set -e
+
+# Create directories where couchbase stores its data
+mkdir -p /opt/couchbase
+cd /opt/couchbase
+mkdir -p var/lib/couchbase \
+    var/lib/couchbase/config \
+    var/lib/couchbase/data \
+    var/lib/couchbase/stats \
+    var/lib/couchbase/logs \
+    var/lib/moxi
+chown -R couchbase:couchbase var
+
+# Start couchbase
+echo "Starting Couchbase Server -- Web UI available at http://<ip>:8091"
+exec /sbin/setuser couchbase /opt/couchbase/bin/couchbase-server -- -noinput
