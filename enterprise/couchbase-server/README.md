@@ -1,5 +1,9 @@
 The README below is cloned from [the official docker repo for couchbase](https://github.com/couchbase/docker/blob/master/enterprise/couchbase-server/4.0.0-beta/README.md).
 
+Note: for a fast automated setup for localhost dev (rather than the usual web wizard), start a bash shell or run docker with this:
+
+    docker run /usr/local/bin/couchbase-setup.sh
+
 ---
 
 This README will guide you through running Couchbase Server under Docker.
@@ -70,17 +74,17 @@ NOTE: the `--ulimit` flags only work on Docker 1.6 or later.
 ## Single host, single container
 
 ```
-┌───────────────────────┐                                                      
-│   Host OS (Linux)     │                                                      
-│  ┌─────────────────┐  │                                                      
-│  │  Container OS   │  │                                                      
-│  │    (CentOS)     │  │                                                      
-│  │  ┌───────────┐  │  │                                                      
-│  │  │ Couchbase │  │  │                                                      
-│  │  │  Server   │  │  │                                                      
-│  │  └───────────┘  │  │                                                      
-│  └─────────────────┘  │                                                      
-└───────────────────────┘                                                      
+┌───────────────────────┐
+│   Host OS (Linux)     │
+│  ┌─────────────────┐  │
+│  │  Container OS   │  │
+│  │    (CentOS)     │  │
+│  │  ┌───────────┐  │  │
+│  │  │ Couchbase │  │  │
+│  │  │  Server   │  │  │
+│  │  └───────────┘  │  │
+│  └─────────────────┘  │
+└───────────────────────┘
 ```
 
 This is a quick way to try out Couchbase Server on your own machine with no installation overhead - just *download and run*. In this case, any networking configuration will work; the only real requirement is that port 8091 be exposed so that you can access the Couchbase Admin Console.
@@ -126,18 +130,18 @@ You should run the SDK on the host and point it to `http://localhost:8091/pools`
 ## Single host, multiple containers
 
 ```
-┌──────────────────────────────────────────────────────────┐                   
-│                     Host OS (Linux)                      │                   
-│                                                          │                   
-│  ┌───────────────┐ ┌───────────────┐  ┌───────────────┐  │                   
-│  │ Container OS  │ │ Container OS  │  │ Container OS  │  │                   
-│  │   (CentOS)    │ │   (CentOS)    │  │   (CentOS)    │  │                   
-│  │ ┌───────────┐ │ │ ┌───────────┐ │  │ ┌───────────┐ │  │                   
-│  │ │ Couchbase │ │ │ │ Couchbase │ │  │ │ Couchbase │ │  │                   
-│  │ │  Server   │ │ │ │  Server   │ │  │ │  Server   │ │  │                   
-│  │ └───────────┘ │ │ └───────────┘ │  │ └───────────┘ │  │                   
-│  └───────────────┘ └───────────────┘  └───────────────┘  │                   
-└──────────────────────────────────────────────────────────┘                   
+┌──────────────────────────────────────────────────────────┐
+│                     Host OS (Linux)                      │
+│                                                          │
+│  ┌───────────────┐ ┌───────────────┐  ┌───────────────┐  │
+│  │ Container OS  │ │ Container OS  │  │ Container OS  │  │
+│  │   (CentOS)    │ │   (CentOS)    │  │   (CentOS)    │  │
+│  │ ┌───────────┐ │ │ ┌───────────┐ │  │ ┌───────────┐ │  │
+│  │ │ Couchbase │ │ │ │ Couchbase │ │  │ │ Couchbase │ │  │
+│  │ │  Server   │ │ │ │  Server   │ │  │ │  Server   │ │  │
+│  │ └───────────┘ │ │ └───────────┘ │  │ └───────────┘ │  │
+│  └───────────────┘ └───────────────┘  └───────────────┘  │
+└──────────────────────────────────────────────────────────┘
 ```
 
 * Useful for testing out a multi-node cluster on your local workstation.
@@ -175,12 +179,12 @@ docker run -d -v ~/couchbase/node3:/opt/couchbase/var -p 8091:8091 couchbase/ser
 
     1. Get the ip address of the container by running `docker inspect --format '{{ .NetworkSettings.IPAddress }}' <node_x_container_id>`.  Lets call that `<node_x_ip_addr>`
 
-    1. In the Server IP Address field, use `<node_x_ip_addr>` 
+    1. In the Server IP Address field, use `<node_x_ip_addr>`
 
     1. In the password field, use the password created above.
 
 
-## Multiple hosts, single container on each host 
+## Multiple hosts, single container on each host
 
 ```
 ┌───────────────────────┐  ┌───────────────────────┐  ┌───────────────────────┐
@@ -242,7 +246,7 @@ To configure Couchbase Server:
 
 ## Cloud environments
 
-Although it is beyond the scope of this README, there is a [github wiki](https://github.com/couchbase/docker/wiki#container-specific-cloud-hosting-platforms) that contains guidance and instructions on how to run Couchbase Server Docker containers in various cloud environments. 
+Although it is beyond the scope of this README, there is a [github wiki](https://github.com/couchbase/docker/wiki#container-specific-cloud-hosting-platforms) that contains guidance and instructions on how to run Couchbase Server Docker containers in various cloud environments.
 
 
 # Licensing

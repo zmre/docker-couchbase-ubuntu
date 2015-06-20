@@ -15,6 +15,10 @@ mkdir -p var/lib/couchbase \
     var/lib/moxi
 chown -R couchbase:couchbase var
 
+ulimit -n 40960        # nofile: max number of open files
+#ulimit -c unlimited    # core: max core file size
+#ulimit -l unlimited    # memlock: maximum locked-in-memory address space
+
 # Start couchbase
 echo "Starting Couchbase Server -- Web UI available at http://<ip>:8091"
 exec /sbin/setuser couchbase /opt/couchbase/bin/couchbase-server -- -noinput
