@@ -3,9 +3,9 @@
 admin_user=Administrator
 admin_password=cb1234
 bucket_name=default
-bucket_ram_quota=4096
+bucket_ram_quota=2048
 index_ram_quota=256
-cluster_ram_quota=4352
+cluster_ram_quota=2048
 num_replicas=0
 num_threads=3
 
@@ -48,9 +48,14 @@ curl -v -X POST http://127.0.0.1:8091/pools/default/buckets \
 # -d bucketType=membase
 # -u ${admin_user}:${admin_password}
 
-
 # Setup Administrator username and password
 curl -v -X POST http://127.0.0.1:8091/settings/web \
   --data-urlencode password="${admin_password}" \
   --data-urlencode username="${admin_user}" \
   -d port=SAME
+
+sleep 5
+
+curl -v -X POST http://127.0.0.1:8093/query/service \
+  -d statement="CREATE PRIMARY INDEX defaultidx on default USING GSI"
+
