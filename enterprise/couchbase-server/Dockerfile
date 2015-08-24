@@ -9,8 +9,8 @@ CMD ["/sbin/my_init"]
 
 WORKDIR /root
 
-ENV CB_SERVER_VERSION "4.0.0-beta"
-ENV CB_SERVER_FILE "couchbase-server-enterprise_${CB_SERVER_VERSION}-ubuntu14.04_amd64.deb"
+ENV CB_SERVER_VERSION "3.0.1"
+ENV CB_SERVER_FILE "couchbase-server-enterprise_${CB_SERVER_VERSION}-ubuntu12.04_amd64.deb"
 ENV CB_SERVER_URL "http://packages.couchbase.com/releases/${CB_SERVER_VERSION}/${CB_SERVER_FILE}"
 
 RUN apt-get update && apt-get install -y wget
