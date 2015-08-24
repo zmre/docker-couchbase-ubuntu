@@ -3,9 +3,9 @@
 admin_user=Administrator
 admin_password=cb1234
 bucket_name=default
-bucket_ram_quota=2048
+bucket_ram_quota=1196
 index_ram_quota=256
-cluster_ram_quota=2048
+cluster_ram_quota=1196
 num_replicas=0
 num_threads=3
 
